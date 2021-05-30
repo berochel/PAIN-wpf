@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="PAIN_wpf.View.SongLibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PAIN_wpf.View"
+             mc:Ignorable="d"  
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top" Height="25">
+            <ToolBar>
+                <Button Content="Open New Window" Command="{Binding Path=NewWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Separator Width="20" Background="Transparent"/>
+                <Button Content="Add New Song" Command="{Binding Path=AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Button Content="Edit" Command="{Binding Path=EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Button Content="Delete" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <ComboBox Height="25" Margin="0" VerticalAlignment="Top" Width="120" Text="{Binding FilterCategory, UpdateSourceTrigger= PropertyChanged}">
+                    <ComboBoxItem>Title</ComboBoxItem>
+                    <ComboBoxItem>Artist</ComboBoxItem>
+                    <ComboBoxItem>Genre</ComboBoxItem>
+                    <ComboBoxItem>Release Year</ComboBoxItem>
+                    <ComboBoxItem>No filter</ComboBoxItem>
+                </ComboBox>
+                <TextBox Height="25" TextWrapping="Wrap" Text="{Binding FilterText, UpdateSourceTrigger = PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+            </ToolBar>
+        </ToolBarTray>
+        <ListView ItemsSource="{Binding SongLibrary}" SelectedItem="{Binding SelectedSong, Mode=TwoWay}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Artist}"/>
+                    <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding Genre}"/>
+                    <GridViewColumn Header="Release Year" DisplayMemberBinding="{Binding ReleaseDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </DockPanel>
+</UserControl>

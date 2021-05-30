@@ -1,0 +1,19 @@
+﻿<Application x:Class="PAIN_wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PAIN_wpf"
+             xmlns:t="clr-namespace:PAIN_wpf.ViewModel"
+             xmlns:k="clr-namespace:PAIN_wpf.View"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type t:SongLibraryViewModel}">
+                <k:SongLibraryView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type t:SongEditViewModel}">
+                <k:SongEditView/>
+            </DataTemplate>
+            <Style TargetType="{x:Type Rectangle}" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
